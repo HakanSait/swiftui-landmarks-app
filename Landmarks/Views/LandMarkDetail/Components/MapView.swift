@@ -11,13 +11,14 @@ import MapKit
 
 struct MapView: View {
     var body: some View {
-        Map(initialPosition: .region(region))
+		Map(position: .constant(.region(region)))
     }
 
 
+	var cordinate: CLLocationCoordinate2D
     private var region: MKCoordinateRegion {
         MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868),
+            center: cordinate,
             span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
         )
     }
@@ -25,5 +26,5 @@ struct MapView: View {
 
 
 #Preview {
-    MapView()
+	MapView(cordinate: landmarks[0].locationCordinate)
 }
